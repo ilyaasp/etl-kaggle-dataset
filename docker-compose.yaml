@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  pg-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: sales_data
+    ports:
+      - 5432:5432
+    volumes:
+      - pg-data:/var/lib/postgresl/data
+
+volumes:
+  pg-data:
+    driver: local

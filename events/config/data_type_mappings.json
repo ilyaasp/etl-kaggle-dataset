@@ -1,0 +1,7 @@
+{
+    "timestamp": "datetime",
+    "visitorid": "str",
+    "event": "str",
+    "itemid": "str",
+    "transactionid": "str"
+}
