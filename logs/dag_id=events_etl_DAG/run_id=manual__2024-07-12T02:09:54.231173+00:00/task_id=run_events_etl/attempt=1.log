@@ -1,0 +1,35 @@
+[2024-07-12T02:09:56.015+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: events_etl_DAG.run_events_etl manual__2024-07-12T02:09:54.231173+00:00 [queued]>
+[2024-07-12T02:09:56.020+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: events_etl_DAG.run_events_etl manual__2024-07-12T02:09:54.231173+00:00 [queued]>
+[2024-07-12T02:09:56.020+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 2
+[2024-07-12T02:09:56.028+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): run_events_etl> on 2024-07-12 02:09:54.231173+00:00
+[2024-07-12T02:09:56.031+0000] {standard_task_runner.py:57} INFO - Started process 66 to run task
+[2024-07-12T02:09:56.034+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'events_etl_DAG', 'run_events_etl', 'manual__2024-07-12T02:09:54.231173+00:00', '--job-id', '46', '--raw', '--subdir', 'DAGS_FOLDER/events_dag.py', '--cfg-path', '/tmp/tmppp073s3g']
+[2024-07-12T02:09:56.036+0000] {standard_task_runner.py:85} INFO - Job 46: Subtask run_events_etl
+[2024-07-12T02:09:56.087+0000] {task_command.py:410} INFO - Running <TaskInstance: events_etl_DAG.run_events_etl manual__2024-07-12T02:09:54.231173+00:00 [running]> on host 7e0553ac55c9
+[2024-07-12T02:09:56.136+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ilyas' AIRFLOW_CTX_DAG_ID='events_etl_DAG' AIRFLOW_CTX_TASK_ID='run_events_etl' AIRFLOW_CTX_EXECUTION_DATE='2024-07-12T02:09:54.231173+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-12T02:09:54.231173+00:00'
+[2024-07-12T02:09:56.138+0000] {subprocess.py:63} INFO - Tmp dir root location: 
+ /tmp
+[2024-07-12T02:09:56.138+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'cd /opt/***/etl/events && python3 main.py']
+[2024-07-12T02:09:56.144+0000] {subprocess.py:86} INFO - Output:
+[2024-07-12T02:09:57.249+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2024-07-12T02:09:57.253+0000] {subprocess.py:93} INFO -   File "main.py", line 39, in <module>
+[2024-07-12T02:09:57.253+0000] {subprocess.py:93} INFO -     main_etl()
+[2024-07-12T02:09:57.254+0000] {subprocess.py:93} INFO -   File "main.py", line 30, in main_etl
+[2024-07-12T02:09:57.255+0000] {subprocess.py:93} INFO -     loader = Loader(file_path=FILE_PATH, table_name='events', unit_dt='ms', schema_path=SCHEMA_PATH)
+[2024-07-12T02:09:57.255+0000] {subprocess.py:93} INFO -   File "/opt/***/etl/kaggle_pipeline/load.py", line 21, in __init__
+[2024-07-12T02:09:57.256+0000] {subprocess.py:93} INFO -     self.transformer = Transformer(schema_path=schema_path)
+[2024-07-12T02:09:57.257+0000] {subprocess.py:93} INFO -   File "/opt/***/etl/kaggle_pipeline/transform.py", line 14, in __init__
+[2024-07-12T02:09:57.257+0000] {subprocess.py:93} INFO -     self.data_type_mappings = _read_json_file(self.schema_path)
+[2024-07-12T02:09:57.258+0000] {subprocess.py:93} INFO -   File "/opt/***/etl/kaggle_pipeline/utils.py", line 5, in _read_json_file
+[2024-07-12T02:09:57.258+0000] {subprocess.py:93} INFO -     with open(file_path, "r") as f:
+[2024-07-12T02:09:57.259+0000] {subprocess.py:93} INFO - FileNotFoundError: [Errno 2] No such file or directory: 'etl/events/config/data_type_mappings.json'
+[2024-07-12T02:09:57.349+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2024-07-12T02:09:57.362+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/bash.py", line 211, in execute
+    f"Bash command failed. The command returned a non-zero exit code {result.exit_code}."
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2024-07-12T02:09:57.365+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=events_etl_DAG, task_id=run_events_etl, execution_date=20240712T020954, start_date=20240712T020956, end_date=20240712T020957
+[2024-07-12T02:09:57.379+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 46 for task run_events_etl (Bash command failed. The command returned a non-zero exit code 1.; 66)
+[2024-07-12T02:09:57.398+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2024-07-12T02:09:57.415+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check

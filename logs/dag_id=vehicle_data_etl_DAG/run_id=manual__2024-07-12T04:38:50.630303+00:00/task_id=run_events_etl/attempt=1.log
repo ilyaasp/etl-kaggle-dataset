@@ -1,0 +1,37 @@
+[2024-07-12T04:38:52.847+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: vehicle_data_etl_DAG.run_events_etl manual__2024-07-12T04:38:50.630303+00:00 [queued]>
+[2024-07-12T04:38:52.853+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: vehicle_data_etl_DAG.run_events_etl manual__2024-07-12T04:38:50.630303+00:00 [queued]>
+[2024-07-12T04:38:52.854+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 2
+[2024-07-12T04:38:52.865+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): run_events_etl> on 2024-07-12 04:38:50.630303+00:00
+[2024-07-12T04:38:52.869+0000] {standard_task_runner.py:57} INFO - Started process 77 to run task
+[2024-07-12T04:38:52.874+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'vehicle_data_etl_DAG', 'run_events_etl', 'manual__2024-07-12T04:38:50.630303+00:00', '--job-id', '59', '--raw', '--subdir', 'DAGS_FOLDER/events_dag.py', '--cfg-path', '/tmp/tmp_hz8yzz1']
+[2024-07-12T04:38:52.880+0000] {standard_task_runner.py:85} INFO - Job 59: Subtask run_events_etl
+[2024-07-12T04:38:52.931+0000] {task_command.py:410} INFO - Running <TaskInstance: vehicle_data_etl_DAG.run_events_etl manual__2024-07-12T04:38:50.630303+00:00 [running]> on host 24dfc49a9e4f
+[2024-07-12T04:38:52.993+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ilyas' AIRFLOW_CTX_DAG_ID='vehicle_data_etl_DAG' AIRFLOW_CTX_TASK_ID='run_events_etl' AIRFLOW_CTX_EXECUTION_DATE='2024-07-12T04:38:50.630303+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-12T04:38:50.630303+00:00'
+[2024-07-12T04:38:52.999+0000] {subprocess.py:63} INFO - Tmp dir root location: 
+ /tmp
+[2024-07-12T04:38:53.000+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'cd /opt/***/etl/vehicle_data && python3 main.py']
+[2024-07-12T04:38:53.021+0000] {subprocess.py:86} INFO - Output:
+[2024-07-12T04:39:05.336+0000] {subprocess.py:93} INFO - 2024-07-12 04:39:05.334 | ERROR    | kaggle_pipeline.extract:get_data:35 - Error downloading or extracting dataset: ('Bad zip file, please report on www.github.com/kaggle/kaggle-api', BadZipFile('Bad magic number for file header'))
+[2024-07-12T04:39:05.338+0000] {subprocess.py:93} INFO - Dataset URL: https://www.kaggle.com/datasets/syedanwarafridi/vehicle-sales-data
+[2024-07-12T04:39:05.431+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2024-07-12T04:39:05.433+0000] {subprocess.py:93} INFO -   File "main.py", line 39, in <module>
+[2024-07-12T04:39:05.434+0000] {subprocess.py:93} INFO -     main_etl()
+[2024-07-12T04:39:05.434+0000] {subprocess.py:93} INFO -   File "main.py", line 30, in main_etl
+[2024-07-12T04:39:05.435+0000] {subprocess.py:93} INFO -     loader = Loader(file_path=FILE_PATH, table_name='events', unit_dt='ms', schema_path=SCHEMA_PATH)
+[2024-07-12T04:39:05.436+0000] {subprocess.py:93} INFO -   File "/opt/***/etl/kaggle_pipeline/load.py", line 21, in __init__
+[2024-07-12T04:39:05.437+0000] {subprocess.py:93} INFO -     self.transformer = Transformer(schema_path=schema_path)
+[2024-07-12T04:39:05.438+0000] {subprocess.py:93} INFO -   File "/opt/***/etl/kaggle_pipeline/transform.py", line 14, in __init__
+[2024-07-12T04:39:05.438+0000] {subprocess.py:93} INFO -     self.data_type_mappings = _read_json_file(self.schema_path)
+[2024-07-12T04:39:05.438+0000] {subprocess.py:93} INFO -   File "/opt/***/etl/kaggle_pipeline/utils.py", line 5, in _read_json_file
+[2024-07-12T04:39:05.438+0000] {subprocess.py:93} INFO -     with open(file_path, "r") as f:
+[2024-07-12T04:39:05.439+0000] {subprocess.py:93} INFO - FileNotFoundError: [Errno 2] No such file or directory: '/opt/***/etl/events/config/data_type_mappings.json'
+[2024-07-12T04:39:05.613+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2024-07-12T04:39:05.646+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/bash.py", line 211, in execute
+    f"Bash command failed. The command returned a non-zero exit code {result.exit_code}."
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2024-07-12T04:39:05.652+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=vehicle_data_etl_DAG, task_id=run_events_etl, execution_date=20240712T043850, start_date=20240712T043852, end_date=20240712T043905
+[2024-07-12T04:39:05.665+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 59 for task run_events_etl (Bash command failed. The command returned a non-zero exit code 1.; 77)
+[2024-07-12T04:39:05.705+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2024-07-12T04:39:05.722+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check

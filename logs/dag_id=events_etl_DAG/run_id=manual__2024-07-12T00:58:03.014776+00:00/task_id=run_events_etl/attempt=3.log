@@ -1,0 +1,33 @@
+[2024-07-12T01:01:57.582+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: events_etl_DAG.run_events_etl manual__2024-07-12T00:58:03.014776+00:00 [queued]>
+[2024-07-12T01:01:57.735+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: events_etl_DAG.run_events_etl manual__2024-07-12T00:58:03.014776+00:00 [queued]>
+[2024-07-12T01:01:57.735+0000] {taskinstance.py:1308} INFO - Starting attempt 3 of 4
+[2024-07-12T01:01:57.743+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): run_events_etl> on 2024-07-12 00:58:03.014776+00:00
+[2024-07-12T01:01:57.746+0000] {standard_task_runner.py:57} INFO - Started process 96 to run task
+[2024-07-12T01:01:57.750+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'events_etl_DAG', 'run_events_etl', 'manual__2024-07-12T00:58:03.014776+00:00', '--job-id', '42', '--raw', '--subdir', 'DAGS_FOLDER/events_dag.py', '--cfg-path', '/tmp/tmpoawjxiid']
+[2024-07-12T01:01:57.752+0000] {standard_task_runner.py:85} INFO - Job 42: Subtask run_events_etl
+[2024-07-12T01:01:57.784+0000] {task_command.py:410} INFO - Running <TaskInstance: events_etl_DAG.run_events_etl manual__2024-07-12T00:58:03.014776+00:00 [running]> on host c007dc4aa1ba
+[2024-07-12T01:01:57.823+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ilyas' AIRFLOW_CTX_DAG_ID='events_etl_DAG' AIRFLOW_CTX_TASK_ID='run_events_etl' AIRFLOW_CTX_EXECUTION_DATE='2024-07-12T00:58:03.014776+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-12T00:58:03.014776+00:00'
+[2024-07-12T01:01:57.825+0000] {subprocess.py:63} INFO - Tmp dir root location: 
+ /tmp
+[2024-07-12T01:01:57.825+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'cd /opt/***/etl/events && python3 main.py']
+[2024-07-12T01:01:57.830+0000] {subprocess.py:86} INFO - Output:
+[2024-07-12T01:01:58.639+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2024-07-12T01:01:58.640+0000] {subprocess.py:93} INFO -   File "main.py", line 9, in <module>
+[2024-07-12T01:01:58.640+0000] {subprocess.py:93} INFO -     from kaggle_pipeline.extract import Extractor
+[2024-07-12T01:01:58.641+0000] {subprocess.py:93} INFO -   File "/opt/***/etl/kaggle_pipeline/extract.py", line 1, in <module>
+[2024-07-12T01:01:58.641+0000] {subprocess.py:93} INFO -     import kaggle
+[2024-07-12T01:01:58.641+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/kaggle/__init__.py", line 7, in <module>
+[2024-07-12T01:01:58.642+0000] {subprocess.py:93} INFO -     api.authenticate()
+[2024-07-12T01:01:58.642+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.7/site-packages/kaggle/api/kaggle_api_extended.py", line 400, in authenticate
+[2024-07-12T01:01:58.642+0000] {subprocess.py:93} INFO -     self.config_file, self.config_dir))
+[2024-07-12T01:01:58.643+0000] {subprocess.py:93} INFO - OSError: Could not find kaggle.json. Make sure it's located in /home/***/.kaggle. Or use the environment method.
+[2024-07-12T01:01:58.703+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2024-07-12T01:01:58.712+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/bash.py", line 211, in execute
+    f"Bash command failed. The command returned a non-zero exit code {result.exit_code}."
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2024-07-12T01:01:58.714+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=events_etl_DAG, task_id=run_events_etl, execution_date=20240712T005803, start_date=20240712T010157, end_date=20240712T010158
+[2024-07-12T01:01:58.721+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 42 for task run_events_etl (Bash command failed. The command returned a non-zero exit code 1.; 96)
+[2024-07-12T01:01:58.734+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2024-07-12T01:01:58.748+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check

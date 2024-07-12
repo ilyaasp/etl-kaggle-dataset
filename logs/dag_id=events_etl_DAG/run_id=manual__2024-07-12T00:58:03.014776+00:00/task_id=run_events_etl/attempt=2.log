@@ -1,0 +1,27 @@
+[2024-07-12T01:01:00.890+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: events_etl_DAG.run_events_etl manual__2024-07-12T00:58:03.014776+00:00 [queued]>
+[2024-07-12T01:01:00.897+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: events_etl_DAG.run_events_etl manual__2024-07-12T00:58:03.014776+00:00 [queued]>
+[2024-07-12T01:01:00.899+0000] {taskinstance.py:1308} INFO - Starting attempt 2 of 3
+[2024-07-12T01:01:00.909+0000] {taskinstance.py:1327} INFO - Executing <Task(BashOperator): run_events_etl> on 2024-07-12 00:58:03.014776+00:00
+[2024-07-12T01:01:00.913+0000] {standard_task_runner.py:57} INFO - Started process 74 to run task
+[2024-07-12T01:01:00.916+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'events_etl_DAG', 'run_events_etl', 'manual__2024-07-12T00:58:03.014776+00:00', '--job-id', '41', '--raw', '--subdir', 'DAGS_FOLDER/events_dag.py', '--cfg-path', '/tmp/tmpnzgindsr']
+[2024-07-12T01:01:00.918+0000] {standard_task_runner.py:85} INFO - Job 41: Subtask run_events_etl
+[2024-07-12T01:01:00.959+0000] {task_command.py:410} INFO - Running <TaskInstance: events_etl_DAG.run_events_etl manual__2024-07-12T00:58:03.014776+00:00 [running]> on host c007dc4aa1ba
+[2024-07-12T01:01:01.010+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ilyas' AIRFLOW_CTX_DAG_ID='events_etl_DAG' AIRFLOW_CTX_TASK_ID='run_events_etl' AIRFLOW_CTX_EXECUTION_DATE='2024-07-12T00:58:03.014776+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-12T00:58:03.014776+00:00'
+[2024-07-12T01:01:01.011+0000] {subprocess.py:63} INFO - Tmp dir root location: 
+ /tmp
+[2024-07-12T01:01:01.012+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'cd /opt/***/etl/events && python3 main.py']
+[2024-07-12T01:01:01.017+0000] {subprocess.py:86} INFO - Output:
+[2024-07-12T01:01:01.193+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2024-07-12T01:01:01.193+0000] {subprocess.py:93} INFO -   File "main.py", line 8, in <module>
+[2024-07-12T01:01:01.193+0000] {subprocess.py:93} INFO -     from kaggle_pipeline.load import Loader
+[2024-07-12T01:01:01.193+0000] {subprocess.py:93} INFO - ModuleNotFoundError: No module named 'kaggle_pipeline'
+[2024-07-12T01:01:01.199+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2024-07-12T01:01:01.205+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/bash.py", line 211, in execute
+    f"Bash command failed. The command returned a non-zero exit code {result.exit_code}."
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2024-07-12T01:01:01.207+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=events_etl_DAG, task_id=run_events_etl, execution_date=20240712T005803, start_date=20240712T010100, end_date=20240712T010101
+[2024-07-12T01:01:01.214+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 41 for task run_events_etl (Bash command failed. The command returned a non-zero exit code 1.; 74)
+[2024-07-12T01:01:01.227+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2024-07-12T01:01:01.237+0000] {taskinstance.py:2651} INFO - 0 downstream tasks scheduled from follow-on schedule check
