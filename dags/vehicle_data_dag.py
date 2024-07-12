@@ -2,11 +2,6 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 from datetime import datetime, timedelta
 
-# Ensure the parent directory is in the Python path
-# sys.path.insert(0, '/opt/airflow')
-
-# from etl.events.main import main_etl
-
 def_args = {
     'owner': 'ilyas',
     'depends_on_past': False,
