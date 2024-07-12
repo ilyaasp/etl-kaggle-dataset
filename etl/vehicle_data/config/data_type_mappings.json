@@ -1,0 +1,18 @@
+{
+    "year": "int",
+    "make": "str",
+    "model": "str",
+    "trim": "str",
+    "body": "str",
+    "transmission": "str",
+    "vin": "str",
+    "state": "str",
+    "condition": "int",
+    "odometer": "int",
+    "color": "str",
+    "interior": "str",
+    "seller": "str",
+    "mmr": "int",
+    "sellingprice": "int",
+    "saledate": "datetime"
+}

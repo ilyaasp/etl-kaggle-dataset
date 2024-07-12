@@ -1,0 +1,6 @@
+{
+    "timestamp": "datetime",
+    "itemid": "str",
+    "property": "str",
+    "value": "str"
+}
