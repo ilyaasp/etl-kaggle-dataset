@@ -16,9 +16,10 @@ sales_data/
 │   ├── item_properties/
 ├───├── vehicle_data/
 │   │   ├── config/
-│   │   │   ├── data_type_mappings.json
-│   │   ├── main.py
-│   ├── kaggle_pipeline/
+│   │   │   └── data_type_mappings.json
+│   │   └── main.py
+│   │
+│   └── kaggle_pipeline/
 │       ├── __pycache__/
 │       ├── extract.py
 │       ├── load.py
