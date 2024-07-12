@@ -9,7 +9,7 @@ This project sets up an ETL pipeline for processing sales data using Apache Airf
 sales_data/
 │
 ├── dags/
-│   └── events_dag.py
+│   └── vehicle_data_dag.py
 │
 ├── etl/
 │   ├── category_tree/
