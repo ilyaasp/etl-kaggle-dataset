@@ -510,27 +510,6 @@ Defines the data type mappings for the columns in the PostgreSQL table. This is 
 
 There are four files here. `extract.py`, `transform.py`, `load.py` and `utils.py`. These four files act as reusable modules for etls that can be created within etl directories (eg: vehicle_data)
 
-```json
-{
-    "year": "int",
-    "make": "str",
-    "model": "str",
-    "trim": "str",
-    "body": "str",
-    "transmission": "str",
-    "vin": "str",
-    "state": "str",
-    "condition": "int",
-    "odometer": "int",
-    "color": "str",
-    "interior": "str",
-    "seller": "str",
-    "mmr": "int",
-    "sellingprice": "int",
-    "saledate": "datetime"
-}
-```
-
 ### 6. `logs/` and `plugins/`
 
 Directories for Airflow logs and plugins.
