@@ -19,8 +19,8 @@ def main_etl():
     # parameters
     DATASET = 'syedanwarafridi/vehicle-sales-data' # 'retailrocket/ecommerce-dataset'
     DIR = 'vehicle_data_sales'
-    FILE_PATH = 'vehicle_data_sales/car_prices.csv'
-    SCHEMA_PATH = "/etl/config/data_type_mappings.json" # /opt/airflow/etl/vehicle_data
+    FILE_PATH = '/opt/airflow/etl/vehicle_data/vehicle_data_sales/car_prices.csv'
+    SCHEMA_PATH = "/opt/airflow/etl/vehicle_data/config/data_type_mappings.json" # /opt/airflow/etl/vehicle_data
 
     # extract data (Only run 2 lines below once)
     extractor = Extractor(dataset=DATASET, dataset_dir=DIR)
