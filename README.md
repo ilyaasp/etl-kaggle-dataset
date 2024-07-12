@@ -32,7 +32,6 @@ sales_data/
 ├── README.md
 ├── airflow.cfg
 ├── docker-compose.yml
-├── docker-compose2.yml
 ├── requirements.txt
 └── webserver_config.py
 ```
