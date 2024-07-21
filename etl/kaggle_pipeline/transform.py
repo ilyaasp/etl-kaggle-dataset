@@ -28,7 +28,8 @@ class Transformer:
                 elif dtype == "datetime":
                     if unit_dt is not None:
                         dataframe[column] = pd.to_datetime(dataframe[column], unit=unit_dt)
-                    dataframe[column] = pd.to_datetime(dataframe[column])
+                    else:
+                        dataframe[column] = pd.to_datetime(dataframe[column])
                 else:
                     logger.error(f"Unsupported data type {dtype} for column {column}")
                     return None

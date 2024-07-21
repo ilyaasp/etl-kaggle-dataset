@@ -19,15 +19,15 @@ def main_etl():
     # parameters
     DATASET = 'syedanwarafridi/vehicle-sales-data' # 'retailrocket/ecommerce-dataset'
     DIR = 'vehicle_data_sales'
-    FILE_PATH = '/opt/airflow/etl/vehicle_data/vehicle_data_sales/car_prices.csv'
-    SCHEMA_PATH = "/opt/airflow/etl/vehicle_data/config/data_type_mappings.json" # /opt/airflow/etl/vehicle_data
+    FILE_PATH = '/Users/ipman/Work/sales_data/etl/vehicle_data/vehicle_data_sales/car_prices.csv' # /opt/airflow
+    SCHEMA_PATH = '/Users/ipman/Work/sales_data/etl/vehicle_data/config/data_type_mappings.json' # /Users/ipman/Work/sales_data
 
     # extract data (Only run 2 lines below once)
-    extractor = Extractor(dataset=DATASET, dataset_dir=DIR)
-    extractor.get_data()
+    # extractor = Extractor(dataset=DATASET, dataset_dir=DIR)
+    # extractor.get_data()
 
     # load and insert data into postgresql
-    loader = Loader(file_path=FILE_PATH, table_name='vehicle_sales', unit_dt='ms', schema_path=SCHEMA_PATH)
+    loader = Loader(file_path=FILE_PATH, table_name='vehicle_sales', schema_path=SCHEMA_PATH)
     events = loader.load_data()
     if events is not None:
         loader.initialize_pg_table()

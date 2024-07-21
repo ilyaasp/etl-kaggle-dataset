@@ -11,8 +11,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from kaggle_pipeline.transform import Transformer
 
 class Loader:
-    def __init__(self, file_path, table_name, unit_dt, schema_path,
-                 db_url='postgresql://admin:password@localhost:5432/sales_data') -> None:
+    def __init__(self, file_path, table_name, schema_path, unit_dt=None,
+                 db_url='postgresql://airflow:airflow@localhost:5432/airflow') -> None:
         self.file_path = file_path
         self.metadata = MetaData()
         self.table_name = table_name
@@ -20,6 +20,7 @@ class Loader:
         self.schema_path = schema_path
         self.transformer = Transformer(schema_path=schema_path)
         self.engine = create_engine(db_url)
+        self.db_url = db_url
 
     def load_data(self):
         try:
