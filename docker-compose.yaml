@@ -95,7 +95,7 @@ services:
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5002:5432"
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 10s
@@ -288,3 +288,4 @@ services:
 
 volumes:
   postgres-db-volume:
+  pg-data:

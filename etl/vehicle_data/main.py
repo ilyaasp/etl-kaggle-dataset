@@ -19,8 +19,8 @@ def main_etl():
     # parameters
     DATASET = 'syedanwarafridi/vehicle-sales-data' # 'retailrocket/ecommerce-dataset'
     DIR = 'vehicle_data_sales'
-    FILE_PATH = '/Users/ipman/Work/sales_data/etl/vehicle_data/vehicle_data_sales/car_prices.csv' # /opt/airflow
-    SCHEMA_PATH = '/Users/ipman/Work/sales_data/etl/vehicle_data/config/data_type_mappings.json' # /Users/ipman/Work/sales_data
+    FILE_PATH = '/opt/airflow/etl/vehicle_data/vehicle_data_sales/car_prices.csv' # /opt/airflow
+    SCHEMA_PATH = '/opt/airflow/etl/vehicle_data/config/data_type_mappings.json' # /Users/ipman/Work/sales_data
 
     # extract data (Only run 2 lines below once)
     # extractor = Extractor(dataset=DATASET, dataset_dir=DIR)
@@ -33,7 +33,7 @@ def main_etl():
         loader.initialize_pg_table()
         loader.insert_data_to_pg()
     else:
-        print(f"No data inserted into PostgreSQL")
+        logger.error(f"No data inserted into PostgreSQL")
 
 if __name__ == "__main__":
     main_etl()

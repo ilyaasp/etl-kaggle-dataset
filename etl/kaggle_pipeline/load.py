@@ -12,7 +12,7 @@ from kaggle_pipeline.transform import Transformer
 
 class Loader:
     def __init__(self, file_path, table_name, schema_path, unit_dt=None,
-                 db_url='postgresql://airflow:airflow@localhost:5432/airflow') -> None:
+                 db_url='postgresql://airflow:airflow@localhost:5002/airflow') -> None:
         self.file_path = file_path
         self.metadata = MetaData()
         self.table_name = table_name
@@ -67,9 +67,9 @@ class Loader:
             
             # Insert data into the table
             if is_replace or is_replace is None:
-                df.to_sql(self.table_name, self.engine, if_exists='replace', index=False)
+                df.to_sql(name=self.table_name, con=self.engine, if_exists='replace', index=False)
             else:
-                df.to_sql(self.table_name, self.engine, if_exists='append', index=False)
+                df.to_sql(name=self.table_name, con=self.engine, if_exists='append', index=False)
 
             logger.info("Data inserted successfully into PostgreSQL")
             
